@@ -21,3 +21,6 @@ default-features = false
 [dependencies.pallet-treasury]
 path = "pallets/treasury"
 default-features = false
+[dependencies.pallet-dao]
+path = "pallets/dao"
+default-features = false

@@ -1,0 +1,23 @@
+[package]
+name = "pallet-dao"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+frame-support = { version = "22.0", default-features = false }
+frame-system = { version = "22.0", default-features = false }
+sp-runtime = { version = "6.0" }
+sp-std = { version = "6.0" }
+
+[lib]
+name = "pallet_dao"
+path = "src/lib.rs"
+
+[features]
+default = ["std"]
+std = [
+  "frame-support/std",
+  "frame-system/std",
+  "sp-runtime/std",
+  "sp-std/std"
+]

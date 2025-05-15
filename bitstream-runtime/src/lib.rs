@@ -62,6 +62,7 @@ construct_runtime!(
         TokenLaunch: pallet_token_launch,
         Forum: pallet_forum,
         Treasury: pallet_treasury,
+        DAO: pallet_dao,
         // Pallets will be injected here next
     }
 );
@@ -77,3 +78,4 @@ impl pallet_treasury::Config for Runtime {
     type DiversifyPercent = frame_support::traits::ConstU8<33>;
     type DAOAccount = ();
 }
+impl pallet_dao::Config for Runtime {}
