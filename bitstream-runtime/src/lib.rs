@@ -58,6 +58,13 @@ construct_runtime!(
     {
         System: frame_system,
         Balances: pallet_balances,
+        PoSE: pallet_pose,
+        TokenLaunch: pallet_token_launch,
         // Pallets will be injected here next
     }
 );
+impl pallet_pose::Config for Runtime {}
+impl pallet_token_launch::Config for Runtime {
+    type Currency = Balances;
+    type TreasuryAccount = ();
+}
