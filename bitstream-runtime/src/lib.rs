@@ -60,6 +60,7 @@ construct_runtime!(
         Balances: pallet_balances,
         PoSE: pallet_pose,
         TokenLaunch: pallet_token_launch,
+        Forum: pallet_forum,
         // Pallets will be injected here next
     }
 );
@@ -68,3 +69,4 @@ impl pallet_token_launch::Config for Runtime {
     type Currency = Balances;
     type TreasuryAccount = ();
 }
+impl pallet_forum::Config for Runtime {}
