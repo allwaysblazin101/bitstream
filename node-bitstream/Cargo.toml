@@ -1,0 +1,12 @@
+[package]
+name = "node-bitstream"
+version = "0.1.0"
+edition = "2021"
+authors = ["Bitstream Dev <allwaysblazin101@gmail.com>"]
+
+[dependencies]
+substrate-cli = { version = "0.10", default-features = false, features = ["cli"] }
+sc-service = { version = "0.10", default-features = false, features = ["full"] }
+bitstream-runtime = { path = "../bitstream-runtime", version = "0.1.0" }
+log = "0.4"
+serde = { version = "1.0", features = ["derive"] }
