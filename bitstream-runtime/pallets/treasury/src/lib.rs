@@ -15,7 +15,7 @@ pub mod pallet {
   pub trait Config: frame_system::Config {
     type Currency: Currency<Self::AccountId>;
     #[pallet::constant]
-    type BurnPercent: Get<u8>; // out of 100
+    type BurnPercent: Get<u8>;
     #[pallet::constant]
     type DiversifyPercent: Get<u8>;
     #[pallet::constant]
@@ -43,19 +43,22 @@ pub mod pallet {
     #[pallet::weight(10_000)]
     pub fn receive(origin: OriginFor<T>, amount: BalanceOf<T>) -> DispatchResult {
       let _ = ensure_signed(origin)?;
+
       let burn = amount * T::BurnPercent::get().into() / 100u32.into();
       let diversify = amount * T::DiversifyPercent::get().into() / 100u32.into();
-      let dao = amount - burn - diversify;
+      let dao_share = amount - burn - diversify;
 
       TreasuryTotal::<T>::mutate(|t| *t += amount);
 
       Self::deposit_event(Event::TreasuryReceived(amount));
       Self::deposit_event(Event::Burned(burn));
       Self::deposit_event(Event::Diversified(diversify));
-      Self::deposit_event(Event::SentToDAO(dao));
+      Self::deposit_event(Event::SentToDAO(dao_share));
 
-      T::Currency::burn(burn);
-      T::Currency::transfer(&T::DAOAccount::get(), &T::DAOAccount::get(), dao, ExistenceRequirement::AllowDeath)?;
+      // Simulate treasury operations
+      T::Currency::withdraw(&T::DAOAccount::get(), burn, frame_support::traits::WithdrawReasons::TRANSFER, ExistenceRequirement::AllowDeath)?;
+      T::Currency::withdraw(&T::DAOAccount::get(), diversify, frame_support::traits::WithdrawReasons::TRANSFER, ExistenceRequirement::AllowDeath)?;
+      T::Currency::deposit_creating(&T::DAOAccount::get(), dao_share);
 
       Ok(())
     }
