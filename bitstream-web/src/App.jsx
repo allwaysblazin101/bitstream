@@ -1,3 +1,4 @@
+import WalletPage from "./pages/WalletPage";
 import SwapPage from "./pages/SwapPage";
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ const App = () => {
 
         <main className="main-content">
           <Routes>
+    <Route path="/wallet" element={<WalletPage />} />
     <Route path="/swap/:from/:to" element={<SwapPage />} />
             <Route path="/upload" element={<UploadPage />} />
             <Route path="/token/:tokenId" element={<TokenPage />} />

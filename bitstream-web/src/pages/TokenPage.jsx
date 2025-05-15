@@ -1,3 +1,4 @@
+import { postToForum } from "../wallet/tx";
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -18,6 +19,7 @@ const TokenPage = () => {
     try {
       // Submit post CID to chain via pallet-forum
       console.log('Post CID submitted:', newPostCID);
+    await postToForum(tokenId, newPostCID);
     } catch (err) {
       console.error('Error submitting post:', err);
     }

@@ -1,3 +1,4 @@
+import { uploadContent } from "../wallet/tx";
 import React, { useState } from 'react';
 import axios from 'axios';
 
