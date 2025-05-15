@@ -27,3 +27,6 @@ default-features = false
 [dependencies.pallet-content]
 path = "pallets/content"
 default-features = false
+[dependencies.pallet-dex]
+path = "pallets/dex"
+default-features = false

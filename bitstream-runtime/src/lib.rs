@@ -64,6 +64,7 @@ construct_runtime!(
         Treasury: pallet_treasury,
         DAO: pallet_dao,
         Content: pallet_content,
+        DEX: pallet_dex,
         // Pallets will be injected here next
     }
 );
@@ -81,3 +82,6 @@ impl pallet_treasury::Config for Runtime {
 }
 impl pallet_dao::Config for Runtime {}
 impl pallet_content::Config for Runtime {}
+impl pallet_dex::Config for Runtime {
+  type Currency = Balances;
+}
