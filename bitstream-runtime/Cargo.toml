@@ -24,3 +24,6 @@ default-features = false
 [dependencies.pallet-dao]
 path = "pallets/dao"
 default-features = false
+[dependencies.pallet-content]
+path = "pallets/content"
+default-features = false

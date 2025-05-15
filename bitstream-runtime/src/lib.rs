@@ -63,6 +63,7 @@ construct_runtime!(
         Forum: pallet_forum,
         Treasury: pallet_treasury,
         DAO: pallet_dao,
+        Content: pallet_content,
         // Pallets will be injected here next
     }
 );
@@ -79,3 +80,4 @@ impl pallet_treasury::Config for Runtime {
     type DAOAccount = ();
 }
 impl pallet_dao::Config for Runtime {}
+impl pallet_content::Config for Runtime {}
